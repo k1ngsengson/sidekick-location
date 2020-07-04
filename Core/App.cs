@@ -10,7 +10,7 @@ namespace Core
         public override void Initialize()
         {
             {
-                Mvx.IoCProvider.RegisterType<IAddressService, AddressService>();
+                Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
 
                 RegisterAppStart<AddressViewModel>();
             }
