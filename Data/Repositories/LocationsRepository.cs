@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public class LocationsRepository : ILocationsRepository
+    public class LocationsRepository : BaseRepository, ILocationsRepository
     {
-
-        private readonly DatabaseContext _databaseContext;
-
-        public LocationsRepository(string dbPath)
+        public LocationsRepository()
         {
-            _databaseContext = new DatabaseContext(dbPath);
+            
         }
 
         public async Task<IEnumerable<Location>> GetLocationsAsync()
@@ -61,7 +58,7 @@ namespace Data.Repositories
 
                 return isModified;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -71,7 +68,7 @@ namespace Data.Repositories
         {
             try
             {
-                var product = await _databaseContext.Products.FindAsync(id);
+                var product = await _databaseContext.Locations.FindAsync(id);
 
                 var tracking = _databaseContext.Remove(product);
 
@@ -81,7 +78,7 @@ namespace Data.Repositories
 
                 return isDeleted;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return false;
             }

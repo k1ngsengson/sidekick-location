@@ -19,7 +19,8 @@ namespace Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(string.Format("Filename={0}", _databasePath));
+            var filename = $"Filename={_databasePath}";
+            optionsBuilder.UseSqlite(filename);
         }
     }
 }
