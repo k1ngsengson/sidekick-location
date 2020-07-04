@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Core.Services
 {
-    public interface IAddressService
+    public interface ILocationsService
     {
-        IReadOnlyCollection<AddressViewModel> GetAddresses();
-        bool AddAddress();
+        IReadOnlyCollection<AddressViewModel> GetLocations();
+        bool AddLocation();
     }
 }

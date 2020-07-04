@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Core.Services
 {
-    public class AddressService : IAddressService
+    public class LocationsService : ILocationsService
     {
-        public bool AddAddress()
+        public bool AddLocation()
         {
             throw new NotImplementedException();
         }
 
-        public IReadOnlyCollection<AddressViewModel> GetAddresses()
+        public IReadOnlyCollection<AddressViewModel> GetLocations()
         {
             throw new NotImplementedException();
         }
