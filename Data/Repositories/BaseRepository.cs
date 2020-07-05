@@ -1,16 +1,16 @@
-﻿using System.IO;
+﻿using Data.DbContexts;
 
 namespace Data.Repositories
 {
     public class BaseRepository
     {
-        internal readonly DatabaseContext _databaseContext;
+        protected internal readonly IDatabaseContext _databaseContext;
+        protected internal readonly IGenerateDatabaseContext _generateDatabaseContext;
 
-        public BaseRepository()
+        public BaseRepository(IDatabaseContext databaseContext, IGenerateDatabaseContext generateDatabaseContext)
         {
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "productsDB.db");
-
-            _databaseContext = new DatabaseContext(dbPath);
+            _databaseContext = databaseContext;
+            _generateDatabaseContext = generateDatabaseContext;
         }
     }
 }
