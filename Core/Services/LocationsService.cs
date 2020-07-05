@@ -1,8 +1,5 @@
-﻿using Data.Entities;
-using Data.Repositories;
+﻿using Core.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Services
@@ -17,27 +14,19 @@ namespace Core.Services
         //}
         public LocationsService()
         {
-            items = new List<Location>()
-            {
-                new Location { Address = "First item" },
-                new Location { Address = "Second item" },
-                new Location { Address =  "Third item" },
-                new Location { Address =  "Fourth item" },
-                new Location { Address =  "Fifth item" },
-                new Location { Address =  "Sixth item" }
-            };
+            items = new List<AddressInfo>();
         }
 
-        private readonly List<Location> items;
+        private readonly List<AddressInfo> items;
 
-        public async Task<bool> AddLocationAsync(Location location)
+        public async Task<bool> AddLocationAsync(AddressInfo location)
         {
             items.Add(location);
 
             return await Task.FromResult(true);//_repository.AddLocationAsync(location);
         }
 
-        public async Task<List<Location>> GetLocationsAsync()
+        public async Task<List<AddressInfo>> GetLocationsAsync()
         {
             //var locations = await _repository.GetLocationsAsync();
 

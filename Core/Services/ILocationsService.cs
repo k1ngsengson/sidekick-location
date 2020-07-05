@@ -1,4 +1,5 @@
-﻿using Data.Entities;
+﻿using Core.Models;
+using Data.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace Core.Services
 {
     public interface ILocationsService
     {
-        Task<List<Location>> GetLocationsAsync();
-        Task<bool> AddLocationAsync(Location location);
+        Task<List<AddressInfo>> GetLocationsAsync();
+        Task<bool> AddLocationAsync(AddressInfo location);
     }
 }
