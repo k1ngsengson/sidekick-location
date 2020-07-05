@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="18dp"
+        android:padding="12dp"
         local:MvxBind="Text Address"/>
 
 </LinearLayout>
