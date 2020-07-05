@@ -8,4 +8,8 @@
     <PackageReference Include="MvvmCross" Version="6.4.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
 </Project>
