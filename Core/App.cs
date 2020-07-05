@@ -4,6 +4,7 @@ using Data.DbContexts;
 using Data.Repositories;
 using MvvmCross;
 using MvvmCross.IoC;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
 namespace Core
@@ -22,12 +23,13 @@ namespace Core
             //Mvx.IoCProvider.RegisterType<IDatabaseContext, DatabaseContext>();
 
             Mvx.IoCProvider.Resolve<ILocationsService>();
+            Mvx.IoCProvider.Resolve<IMvxNavigationService>();
             //Mvx.IoCProvider.Resolve<ILocationsRepository>();
 
             //Mvx.IoCProvider.Resolve<IDatabaseContext>();
             //Mvx.IoCProvider.Resolve<IGenerateDatabaseContext>();
 
-            RegisterAppStart<LocationViewModel>();
+            RegisterAppStart<LocationListViewModel>();
 
         }
     }
