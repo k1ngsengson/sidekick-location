@@ -42,7 +42,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Add Location"
+            android:text="Add Address"
             local:MvxBind="Click RedirectToAddLocationCommand">
         </Button>
     </LinearLayout>
