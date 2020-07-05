@@ -8,7 +8,7 @@
                android:supportsRtl="true" 
                android:theme="@style/AppTheme">
     <!-- Put your Google Maps V2 API Key here. -->
-    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="YOUR_API_KEY" />
+    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCo_xvOH0nqR6RYF01_b_bnqI2V9QK7xqs" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     <!-- Necessary for apps that target Android 9.0 or higher -->
     <uses-library android:name="org.apache.http.legacy" android:required="false" />
@@ -21,9 +21,6 @@
   <!-- Google Maps for Android v2 requires OpenGL ES v2 -->
   <uses-feature android:glEsVersion="0x00020000" android:required="true" />
   
-  <!-- Necessary for apps that target Android 9.0 or higher -->
-  <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
   <!-- Permission to receive remote notifications from Google Play Services -->
   <!-- Notice here that we have the package name of our application as a prefix on the permissions. -->
   <uses-permission android:name="com.companyname.droid.permission.MAPS_RECEIVE" />
