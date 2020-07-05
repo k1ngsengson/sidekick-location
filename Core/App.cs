@@ -19,6 +19,7 @@ namespace Core
             .RegisterAsLazySingleton();
 
             Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
+            Mvx.IoCProvider.RegisterType<IGoogleMapService, GoogleMapService>();
             //Mvx.IoCProvider.RegisterType<ILocationsRepository, LocationsRepository>();
             //Mvx.IoCProvider.RegisterType<IDatabaseContext, DatabaseContext>();
 
