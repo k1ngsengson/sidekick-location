@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{66C0A6C4-839D-49A8-9E39-1D82AADD9F38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{B40BBA9B-3FF7-457C-AD4D-E17C78E0B2C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{B40BBA9B-3FF7-457C-AD4D-E17C78E0B2C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid", "Droid\Droid.csproj", "{5E5824ED-209D-40F9-A14B-19680D5130BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid", "Droid\Droid.csproj", "{AA85217B-5B1A-4531-9619-BFF3B9846F42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +23,12 @@ Global
 		{B40BBA9B-3FF7-457C-AD4D-E17C78E0B2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B40BBA9B-3FF7-457C-AD4D-E17C78E0B2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B40BBA9B-3FF7-457C-AD4D-E17C78E0B2C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E5824ED-209D-40F9-A14B-19680D5130BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E5824ED-209D-40F9-A14B-19680D5130BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E5824ED-209D-40F9-A14B-19680D5130BA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{5E5824ED-209D-40F9-A14B-19680D5130BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E5824ED-209D-40F9-A14B-19680D5130BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E5824ED-209D-40F9-A14B-19680D5130BA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AA85217B-5B1A-4531-9619-BFF3B9846F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA85217B-5B1A-4531-9619-BFF3B9846F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA85217B-5B1A-4531-9619-BFF3B9846F42}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AA85217B-5B1A-4531-9619-BFF3B9846F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA85217B-5B1A-4531-9619-BFF3B9846F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA85217B-5B1A-4531-9619-BFF3B9846F42}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
