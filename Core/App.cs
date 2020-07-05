@@ -1,6 +1,9 @@
 ﻿using Core.Services;
 using Core.ViewModels;
+using Data.DbContexts;
+using Data.Repositories;
 using MvvmCross;
+using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 
 namespace Core
@@ -9,11 +12,23 @@ namespace Core
     {
         public override void Initialize()
         {
-            {
-                Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
+            CreatableTypes()
+            .EndingWith("Service")
+            .AsInterfaces()
+            .RegisterAsLazySingleton();
 
-                RegisterAppStart<AddressViewModel>();
-            }
+            Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
+            //Mvx.IoCProvider.RegisterType<ILocationsRepository, LocationsRepository>();
+            //Mvx.IoCProvider.RegisterType<IDatabaseContext, DatabaseContext>();
+
+            Mvx.IoCProvider.Resolve<ILocationsService>();
+            //Mvx.IoCProvider.Resolve<ILocationsRepository>();
+
+            //Mvx.IoCProvider.Resolve<IDatabaseContext>();
+            //Mvx.IoCProvider.Resolve<IGenerateDatabaseContext>();
+
+            RegisterAppStart<LocationViewModel>();
+
         }
     }
 }
