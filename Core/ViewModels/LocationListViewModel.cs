@@ -1,16 +1,22 @@
 ﻿using Core.Services;
 using Data.Entities;
+using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Core.ViewModels
 {
-    public class LocationViewModel : BaseViewModel
+    public class LocationListViewModel : BaseViewModel
     {
         private readonly ILocationsService _service;
+        private readonly IMvxNavigationService _navigationService;
 
-        public LocationViewModel(ILocationsService service)
+        public LocationListViewModel(ILocationsService service, IMvxNavigationService navigationService)
         {
             _service = service;
+            _navigationService = navigationService;
             LoadData();
             Title = "Locations";
             IsBusy = false;
@@ -31,6 +37,16 @@ namespace Core.ViewModels
         {
             Locations = new ObservableCollection<Location>(await _service.GetLocationsAsync());
 
+        }
+
+        public ICommand RedirectToAddLocationCommand
+        {
+            get { return new MvxCommand(RedirectToAddLocation); }
+        }
+
+        public async void RedirectToAddLocation()
+        {
+            await _navigationService.Navigate<LocationItemViewModel>();
         }
     }
 }
