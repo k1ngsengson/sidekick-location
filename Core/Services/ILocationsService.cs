@@ -1,13 +1,12 @@
-﻿using Core.ViewModels;
-using System;
+﻿using Data.Entities;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Core.Services
 {
     public interface ILocationsService
     {
-        IReadOnlyCollection<AddressViewModel> GetLocations();
-        bool AddLocation();
+        Task<List<Location>> GetLocationsAsync();
+        Task<bool> AddLocationAsync(Location location);
     }
 }
