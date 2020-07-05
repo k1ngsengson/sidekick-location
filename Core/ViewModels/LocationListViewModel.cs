@@ -1,14 +1,14 @@
-﻿using Core.Services;
-using Data.Entities;
+﻿using Core.Models;
+using Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Core.ViewModels
 {
-    public class LocationListViewModel : BaseViewModel
+    public class LocationListViewModel : MvxViewModel<AddressInfo>
     {
         private readonly ILocationsService _service;
         private readonly IMvxNavigationService _navigationService;
@@ -17,26 +17,25 @@ namespace Core.ViewModels
         {
             _service = service;
             _navigationService = navigationService;
+
             LoadData();
-            Title = "Locations";
-            IsBusy = false;
         }
 
-        private ObservableCollection<Location> _locations;
-        public ObservableCollection<Location> Locations
+
+        private ObservableCollection<AddressInfo> _addresses;
+        public ObservableCollection<AddressInfo> Addresses
         {
-            get { return _locations; }
+            get { return _addresses; }
             set
             {
-                _locations = value;
-                RaisePropertyChanged(() => Locations);
+                _addresses = value;
+                RaisePropertyChanged(() => Addresses);
             }
         }
 
         public async void LoadData()
         {
-            Locations = new ObservableCollection<Location>(await _service.GetLocationsAsync());
-
+            Addresses = new ObservableCollection<AddressInfo>(await _service.GetLocationsAsync());
         }
 
         public ICommand RedirectToAddLocationCommand
@@ -47,6 +46,11 @@ namespace Core.ViewModels
         public async void RedirectToAddLocation()
         {
             await _navigationService.Navigate<LocationItemViewModel>();
+        }
+
+        public override void Prepare(AddressInfo addressInfo)
+        {
+            Addresses.Add(addressInfo);
         }
     }
 }
