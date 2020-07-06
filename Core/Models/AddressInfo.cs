@@ -19,5 +19,9 @@ namespace Core.Models
             Longitude = (double)jsonObject["result"]["geometry"]["location"]["lng"];
             Json = jsonObject.ToString();
         }
+
+        public AddressInfo()
+        {
+        }
     }
 }
