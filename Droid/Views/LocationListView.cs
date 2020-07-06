@@ -4,6 +4,7 @@ using Android.App;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.OS;
+using Core.Models;
 using Core.ViewModels;
 using MvvmCross.Platforms.Android.Views;
 using System.Linq;
@@ -51,12 +52,16 @@ namespace Droid.Views
                 }
 
                 // We create an instance of CameraUpdate, and move the map to it.
-                var firstAddress = ViewModel.Addresses.First();
-                var firstLatLong = new LatLng(firstAddress.Latitude, firstAddress.Longitude);
-                var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(firstLatLong, 15);
-                googleMap.MoveCamera(cameraUpdate);
-            }
-            
+                var lastAddress = ViewModel.Addresses.Last();
+                SetCamera(lastAddress);
+            }            
+        }
+
+        void SetCamera(AddressInfo address)
+        {
+            var lastLatLong = new LatLng(address.Latitude, address.Longitude);
+            var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(lastLatLong, 15);
+            googleMap.MoveCamera(cameraUpdate);
         }
     }
 }
