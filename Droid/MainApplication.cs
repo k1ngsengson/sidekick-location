@@ -1,9 +1,11 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Runtime;
 using Core;
 using MvvmCross.Platforms.Android.Core;
 using MvvmCross.Platforms.Android.Views;
 using System;
+using System.IO;
 
 namespace Droid
 {
@@ -12,6 +14,7 @@ namespace Droid
     {
         public MainApplication(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
+            UserDialogs.Init(this);
         }
     }
 }
