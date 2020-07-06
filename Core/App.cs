@@ -20,15 +20,15 @@ namespace Core
 
             Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
             Mvx.IoCProvider.RegisterType<IGoogleMapService, GoogleMapService>();
-            //Mvx.IoCProvider.RegisterType<ILocationsRepository, LocationsRepository>();
-            //Mvx.IoCProvider.RegisterType<IDatabaseContext, DatabaseContext>();
+            Mvx.IoCProvider.RegisterType<ILocationsRepository, LocationsRepository>();
+            Mvx.IoCProvider.RegisterType<DatabaseContext>();
 
             Mvx.IoCProvider.Resolve<ILocationsService>();
             Mvx.IoCProvider.Resolve<IMvxNavigationService>();
-            //Mvx.IoCProvider.Resolve<ILocationsRepository>();
+            Mvx.IoCProvider.Resolve<ILocationsRepository>();
 
-            //Mvx.IoCProvider.Resolve<IDatabaseContext>();
-            //Mvx.IoCProvider.Resolve<IGenerateDatabaseContext>();
+            Mvx.IoCProvider.Resolve<DatabaseContext>();
+            
 
             RegisterAppStart<LocationListViewModel>();
 
