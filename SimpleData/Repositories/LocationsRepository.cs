@@ -15,7 +15,7 @@ namespace Data.Repositories
         {
             try
             {                
-                return await GetLocations();
+                return await _storage.GetItems();
             }
             catch (Exception e)
             {
@@ -28,7 +28,7 @@ namespace Data.Repositories
         {
             try
             {
-                return await AddLocation(location);                
+                return await _storage.AddItem(location);                
             }
             catch (Exception e)
             {
