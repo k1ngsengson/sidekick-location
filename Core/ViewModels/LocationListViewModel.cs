@@ -2,7 +2,6 @@
 using Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -63,18 +62,14 @@ namespace Core.ViewModels
         #region Methods
         public async Task LoadData()
         {
-            Addresses = new ObservableCollection<AddressInfo>(await _service.GetLocationsAsync());
+            Addresses = new ObservableCollection<AddressInfo>(await _service.GetLocationsAsync());            
         }
-        //public override void Prepare(AddressInfo addressInfo)
-        //{
-        //    Addresses.Add(addressInfo);
-        //}
         #endregion
 
         #region Commands
         public ICommand RedirectToAddLocationCommand
         {
-            get { return new MvxCommand(OnRedirectToAddLocation); }
+            get { return new MvxCommand(async () => await OnRedirectToAddLocation()); }
         }
 
         public ICommand ShowMapCommand
@@ -88,7 +83,7 @@ namespace Core.ViewModels
         #endregion
 
         #region Events
-        public async void OnRedirectToAddLocation()
+        public async Task OnRedirectToAddLocation()
         {
             await _navigationService.Navigate<LocationItemViewModel>();
         }
@@ -103,9 +98,7 @@ namespace Core.ViewModels
         {
             MapVisible = false;
             ListVisible = true;
-        }
+        }        
         #endregion
-
-        
     }
 }

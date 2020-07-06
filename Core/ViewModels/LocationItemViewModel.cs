@@ -38,7 +38,7 @@ namespace Core.ViewModels
                 {
                     _selectedAddress = value;
                     RaisePropertyChanged(() => SelectedAddress);
-                }                
+                }
             }
         }
 
@@ -72,7 +72,7 @@ namespace Core.ViewModels
                 {
                     _addresses = value;
                     RaisePropertyChanged(() => Addresses);
-                }                
+                }
             }
         }
         #endregion
@@ -80,12 +80,12 @@ namespace Core.ViewModels
         #region Commands
         public ICommand ItemSelectedCommand
         {
-            get { return new MvxCommand(OnItemSelected); }
+            get { return new MvxCommand(async () => await OnItemSelected()); }
         }
         #endregion
 
         #region Events
-        private async void OnItemSelected()
+        private async Task OnItemSelected()
         {
             var addressInfo = _googleMapService.GetPlaceDetails(SelectedAddress.PlaceId).Result;
 
@@ -96,7 +96,7 @@ namespace Core.ViewModels
                 if (save)
                     await _navigationService.Navigate<LocationListViewModel>();
                 else
-                    UserDialogs.Instance.Alert("Failed to save to Database");                    
+                    UserDialogs.Instance.Alert("Failed to save to Database");
             }
         }
         #endregion
