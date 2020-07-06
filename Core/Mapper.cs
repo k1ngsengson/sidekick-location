@@ -1,5 +1,5 @@
 ﻿using Core.Models;
-using Data.Entities;
+using Entities;
 
 namespace Core
 {
@@ -12,7 +12,7 @@ namespace Core
                 Address = entity.Address,
                 Longitude = entity.Longitude,
                 Latitude = entity.Latitude,
-                Json = entity.Json
+                //Json = entity.Json
             };
 
             return model;
@@ -25,7 +25,7 @@ namespace Core
                 Address = model.Address,
                 Longitude = model.Longitude,
                 Latitude = model.Latitude,
-                Json = model.Json
+                //Json = model.Json
             };
 
             return entity;

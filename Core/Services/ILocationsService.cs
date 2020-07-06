@@ -1,5 +1,4 @@
 ﻿using Core.Models;
-using Data.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

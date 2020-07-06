@@ -1,6 +1,5 @@
 ﻿using Core.Services;
 using Core.ViewModels;
-using Data.DbContexts;
 using Data.Repositories;
 using MvvmCross;
 using MvvmCross.IoC;
@@ -21,13 +20,13 @@ namespace Core
             Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
             Mvx.IoCProvider.RegisterType<IGoogleMapService, GoogleMapService>();
             Mvx.IoCProvider.RegisterType<ILocationsRepository, LocationsRepository>();
-            Mvx.IoCProvider.RegisterType<DatabaseContext>();
+            //Mvx.IoCProvider.RegisterType<DatabaseContext>();
 
             Mvx.IoCProvider.Resolve<ILocationsService>();
             Mvx.IoCProvider.Resolve<IMvxNavigationService>();
             Mvx.IoCProvider.Resolve<ILocationsRepository>();
 
-            Mvx.IoCProvider.Resolve<DatabaseContext>();
+            //Mvx.IoCProvider.Resolve<DatabaseContext>();
             
 
             RegisterAppStart<LocationListViewModel>();

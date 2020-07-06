@@ -17,7 +17,7 @@ namespace Core.Services
         {
             _httpClientInstance =  new HttpClient
             {
-                BaseAddress = new Uri(StringConstants.GoogleApiPath)
+                BaseAddress = new Uri(StringConstants.GOOGLE_API_PATH)
             };
         }
 
@@ -27,7 +27,7 @@ namespace Core.Services
 
             CancellationToken cancellationToken = new CancellationTokenSource(TimeSpan.FromMinutes(2)).Token;
 
-            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, $"api/place/autocomplete/json?key={StringConstants.GooglePlacesApiKey}&input={WebUtility.UrlEncode(search)}"))
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, $"api/place/autocomplete/json?key={StringConstants.GOOGLE_API_KEY}&input={WebUtility.UrlEncode(search)}"))
             { //Be sure to UrlEncode the search term they enter
 
                 using (HttpResponseMessage message = await _httpClientInstance.SendAsync(request, HttpCompletionOption.ResponseContentRead, cancellationToken).ConfigureAwait(false))
@@ -52,7 +52,7 @@ namespace Core.Services
 
             CancellationToken cancellationToken = new CancellationTokenSource(TimeSpan.FromMinutes(2)).Token;
 
-            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, $"api/place/details/json?placeid={Uri.EscapeUriString(placeId)}&key={StringConstants.GooglePlacesApiKey}"))
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, $"api/place/details/json?placeid={Uri.EscapeUriString(placeId)}&key={StringConstants.GOOGLE_API_KEY}"))
             using (HttpResponseMessage message = await _httpClientInstance.SendAsync(request, HttpCompletionOption.ResponseContentRead, cancellationToken).ConfigureAwait(false))
             {
                 if (message.IsSuccessStatusCode)

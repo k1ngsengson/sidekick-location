@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Core.ViewModels
 {
-    public class LocationListViewModel : MvxViewModel<AddressInfo>
+    public class LocationListViewModel : BaseViewModel
     {
         private readonly ILocationsService _service;
         private readonly IMvxNavigationService _navigationService;
@@ -65,10 +65,10 @@ namespace Core.ViewModels
         {
             Addresses = new ObservableCollection<AddressInfo>(await _service.GetLocationsAsync());
         }
-        public override void Prepare(AddressInfo addressInfo)
-        {
-            Addresses.Add(addressInfo);
-        }
+        //public override void Prepare(AddressInfo addressInfo)
+        //{
+        //    Addresses.Add(addressInfo);
+        //}
         #endregion
 
         #region Commands
@@ -88,9 +88,9 @@ namespace Core.ViewModels
         #endregion
 
         #region Events
-        public void OnRedirectToAddLocation()
+        public async void OnRedirectToAddLocation()
         {
-            _navigationService.Navigate<LocationItemViewModel>().ConfigureAwait(false);
+            await _navigationService.Navigate<LocationItemViewModel>();
         }
 
         public void OnShowMapCommand()

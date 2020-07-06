@@ -1,21 +1,12 @@
-﻿using Core.Models;
+﻿using Acr.UserDialogs;
+using Core.Models;
 using Core.Services;
-using Data.Entities;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
-using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
-using System.Net;
-using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Common;
-using Geocoding.Google;
-using Geocoding;
-using System.Linq;
-using Acr.UserDialogs;
 
 namespace Core.ViewModels
 {
@@ -94,16 +85,16 @@ namespace Core.ViewModels
         #endregion
 
         #region Events
-        private void OnItemSelected()
+        private async void OnItemSelected()
         {
             var addressInfo = _googleMapService.GetPlaceDetails(SelectedAddress.PlaceId).Result;
 
             if (addressInfo != null)
             {
-                bool save = _service.AddLocationAsync(addressInfo).Result;
+                bool save = await _service.AddLocationAsync(addressInfo);
 
                 if (save)
-                    _navigationService.Navigate<LocationListViewModel, AddressInfo>(addressInfo);
+                    await _navigationService.Navigate<LocationListViewModel>();
                 else
                     UserDialogs.Instance.Alert("Failed to save to Database");                    
             }
