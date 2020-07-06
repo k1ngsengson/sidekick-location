@@ -28,9 +28,6 @@ namespace Data.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Json")
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("Latitude")
                         .HasColumnType("REAL");
 

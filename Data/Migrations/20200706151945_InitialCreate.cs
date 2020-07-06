@@ -16,8 +16,7 @@ namespace Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Longitude = table.Column<double>(nullable: false),
-                    Latitude = table.Column<double>(nullable: false),
-                    Json = table.Column<string>(nullable: true)
+                    Latitude = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
