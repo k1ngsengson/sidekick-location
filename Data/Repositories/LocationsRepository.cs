@@ -1,5 +1,5 @@
 ﻿using Data.DbContexts;
-using Data.Entities;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,8 +9,10 @@ namespace Data.Repositories
 {
     public class LocationsRepository : BaseRepository, ILocationsRepository
     {
-        public LocationsRepository()
-        { 
+        public LocationsRepository(): base()
+        {
+            _databaseContext.Database.EnsureCreated();
+            _databaseContext.Database.Migrate();
         }
 
         public async Task<IEnumerable<Location>> GetLocationsAsync()
@@ -18,14 +20,15 @@ namespace Data.Repositories
             try
             {
                 using (DatabaseContext context = _databaseContext)
-                {
-                    var Locations = await context.Locations.ToListAsync();
+                {                    
+                    var locations = await context.Locations.ToListAsync();
 
-                    return Locations;
+                    return locations;
                 }
             }
             catch (Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e.Message);
                 return null;
             }
         }
@@ -47,7 +50,7 @@ namespace Data.Repositories
             }
             catch (Exception e)
             {
-                
+                System.Diagnostics.Debug.WriteLine(e.Message);
                 return false;
             }
         }
