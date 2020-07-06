@@ -18,8 +18,6 @@ namespace Data.DbContexts
             _databasePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "LocationsDB.db");
 
             Database.EnsureCreated();
-                        
-            
         }
 
         public DatabaseContext(string databasePath)

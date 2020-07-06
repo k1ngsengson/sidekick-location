@@ -21,6 +21,11 @@ namespace Core.Services
             };
         }
 
+        /// <summary>
+        /// Search Places by keyword
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
         public async Task<PlacesLocationPredictions> GetPlacesPredictionsAsync(string search)
         {
             // TODO: Add throttle logic, Google begins denying requests if too many are made in a short amount of time
@@ -46,6 +51,11 @@ namespace Core.Services
             return null;
         }
 
+        /// <summary>
+        /// Get google place details by Id
+        /// </summary>
+        /// <param name="placeId"></param>
+        /// <returns></returns>
         public async Task<AddressInfo> GetPlaceDetails(string placeId)
         {
             AddressInfo result = null;

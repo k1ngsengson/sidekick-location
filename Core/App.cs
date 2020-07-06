@@ -12,22 +12,21 @@ namespace Core
     {
         public override void Initialize()
         {
+            // this line registers all the services names ending with Service
             CreatableTypes()
             .EndingWith("Service")
             .AsInterfaces()
             .RegisterAsLazySingleton();
 
+            // register services
             Mvx.IoCProvider.RegisterType<ILocationsService, LocationsService>();
             Mvx.IoCProvider.RegisterType<IGoogleMapService, GoogleMapService>();
             Mvx.IoCProvider.RegisterType<ILocationsRepository, LocationsRepository>();
-            //Mvx.IoCProvider.RegisterType<DatabaseContext>();
-
+            
+            // resolvers
             Mvx.IoCProvider.Resolve<ILocationsService>();
             Mvx.IoCProvider.Resolve<IMvxNavigationService>();
             Mvx.IoCProvider.Resolve<ILocationsRepository>();
-
-            //Mvx.IoCProvider.Resolve<DatabaseContext>();
-            
 
             RegisterAppStart<LocationListViewModel>();
 

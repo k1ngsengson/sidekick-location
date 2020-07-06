@@ -16,7 +16,6 @@ namespace Core.ViewModels
         private readonly IMvxNavigationService _navigationService;
         private readonly IGoogleMapService _googleMapService;
 
-
         public LocationItemViewModel(ILocationsService service, IMvxNavigationService navigationService, IGoogleMapService googleMapService)
         {
             _service = service;
@@ -54,7 +53,7 @@ namespace Core.ViewModels
 
                     if (!string.IsNullOrWhiteSpace(_addressSearch))
                     {
-                        GetPlacesPredictionsAsync();
+                        GetPlacesPredictionsAsync().ConfigureAwait(false);                        
                     }
 
                     RaisePropertyChanged(() => Addresses);
