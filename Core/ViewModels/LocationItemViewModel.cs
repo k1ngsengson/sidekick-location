@@ -15,6 +15,7 @@ using Common;
 using Geocoding.Google;
 using Geocoding;
 using System.Linq;
+using Acr.UserDialogs;
 
 namespace Core.ViewModels
 {
@@ -35,6 +36,7 @@ namespace Core.ViewModels
             IsBusy = false;
         }
 
+        #region Properties
         private Place _selectedAddress;
         public Place SelectedAddress
         {
@@ -82,27 +84,33 @@ namespace Core.ViewModels
                 }                
             }
         }
+        #endregion
 
-
+        #region Commands
         public ICommand ItemSelectedCommand
         {
             get { return new MvxCommand(OnItemSelected); }
         }
+        #endregion
 
-        private async void OnItemSelected()
+        #region Events
+        private void OnItemSelected()
         {
-            var addressInfo = await _googleMapService.GetPlaceDetails(SelectedAddress.PlaceId);
+            var addressInfo = _googleMapService.GetPlaceDetails(SelectedAddress.PlaceId).Result;
 
             if (addressInfo != null)
             {
-                bool save = await _service.AddLocationAsync(addressInfo);
+                bool save = _service.AddLocationAsync(addressInfo).Result;
 
                 if (save)
-                    await _navigationService.Navigate<LocationListViewModel, AddressInfo>(addressInfo);
+                    _navigationService.Navigate<LocationListViewModel, AddressInfo>(addressInfo);
+                else
+                    UserDialogs.Instance.Alert("Failed to save to Database");                    
             }
         }
+        #endregion
 
-
+        #region Methods
         private async Task GetPlacesPredictionsAsync()
         {
             var predictionList = await _googleMapService.GetPlacesPredictionsAsync(AddressSearch);
@@ -128,5 +136,6 @@ namespace Core.ViewModels
                 throw new Exception(predictionList.Status);
             }
         }
+        #endregion
     }
 }
