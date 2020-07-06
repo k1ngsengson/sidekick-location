@@ -4,13 +4,11 @@ namespace Data.Repositories
 {
     public class BaseRepository
     {
-        protected internal readonly IDatabaseContext _databaseContext;
-        protected internal readonly IGenerateDatabaseContext _generateDatabaseContext;
+        protected internal readonly DatabaseContext _databaseContext;
 
-        public BaseRepository(IDatabaseContext databaseContext, IGenerateDatabaseContext generateDatabaseContext)
+        public BaseRepository()
         {
-            _databaseContext = databaseContext;
-            _generateDatabaseContext = generateDatabaseContext;
+            _databaseContext = new DatabaseContext();
         }
     }
 }

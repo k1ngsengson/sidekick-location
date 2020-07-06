@@ -9,21 +9,17 @@ namespace Data.Repositories
 {
     public class LocationsRepository : BaseRepository, ILocationsRepository
     {
-        
-
-        public LocationsRepository(IDatabaseContext databaseContext, IGenerateDatabaseContext generateDatabaseContext) :
-            base (databaseContext, generateDatabaseContext)
-        {
-            
+        public LocationsRepository()
+        { 
         }
 
         public async Task<IEnumerable<Location>> GetLocationsAsync()
         {
             try
             {
-                using (IDatabaseContext context = _generateDatabaseContext.NewContext())
+                using (DatabaseContext context = _databaseContext)
                 {
-                    var Locations = await _databaseContext.Locations.ToListAsync();
+                    var Locations = await context.Locations.ToListAsync();
 
                     return Locations;
                 }
@@ -38,9 +34,9 @@ namespace Data.Repositories
         {
             try
             {
-                using (IDatabaseContext context = _generateDatabaseContext.NewContext())
+                using (DatabaseContext context = _databaseContext)
                 {
-                    var tracking = await _databaseContext.Locations.AddAsync(location);
+                    var tracking = await context.Locations.AddAsync(location);
 
                     await _databaseContext.SaveChangesAsync();
 
